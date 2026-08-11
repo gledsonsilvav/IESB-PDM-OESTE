@@ -1,93 +1,50 @@
-# 💻 Prática 04: Dando Vida ao App (Adicionar e Deletar)
+# Welcome to your Expo app 👋
 
-Vamos conectar a interface ao React. Ao final, você digita uma tarefa, adiciona à lista e remove pelo `X`.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 🎯 Objetivos
+## Get started
 
-* Criar estados para o texto do input e para a lista.
-* Implementar `handleAdd` e `handleDelete` com imutabilidade.
-* Trocar cards estáticos por renderização com `.map()`.
-* Validar o fluxo no Expo Go.
+1. Install dependencies
 
----
+   ```bash
+   npm install
+   ```
 
-## 📦 Fluxo Git
+2. Start the app
 
-1. Crie a Issue da **Prática 04**.
-2. Branch:
+   ```bash
+   npx expo start
+   ```
 
-```bash
-git checkout -b feature/pratica04
-```
+In the output, you'll find options to open the app in a
 
-3. Continue o app em `praticas/pratica04` (crie o Expo se ainda não existir, ou evolua a cópia da Prática 03).
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-```bash
-npm install
-npx expo start
-```
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
----
+## Get a fresh project
 
-## 🛠️ O que implementar
-
-### 1. Estados
-
-No componente principal:
-
-* `taskText` — string do que está sendo digitado (`useState('')`)
-* `tasks` — array de tarefas (`useState([])`)
-
-### 2. Capturar digitação
-
-No `TextInput`:
-
-* `value={taskText}`
-* `onChangeText={setTaskText}`
-
-### 3. Função `handleAdd`
-
-* Ignore texto vazio (`trim`).
-* Crie objeto `{ id, title }` (`id` com `Date.now().toString()` é suficiente neste exercício).
-* Atualize a lista com spread: `setTasks([...tasks, newTask])`.
-* Limpe o input: `setTaskText('')`.
-* Ligue essa função no `onPress` do botão `+`.
-
-### 4. Renderizar com `.map()`
-
-* Remova os cards hardcoded.
-* Use `tasks.map(...)` para desenhar cada card.
-* Não esqueça a prop `key={item.id}`.
-
-### 5. Função `handleDelete(id)`
-
-* Use `filter` para gerar nova lista sem o id clicado.
-* Passe a função ao `onPress` do `X` de cada card.
-
----
-
-## 🧪 Como testar
-
-1. Adicione 3 tarefas diferentes.
-2. Delete a do meio.
-3. Confirme que o input limpa após adicionar.
-4. (Esperado) Com muitas tarefas, a tela **pode não rolar bem** — isso será resolvido na próxima aula com `FlatList`.
-
----
-
-## ✅ Critérios de entrega
-
-* [ ] Adicionar e deletar funcionando no celular
-* [ ] Estados + imutabilidade (sem `push`/`splice` no estado)
-* [ ] Lista renderizada com `.map()`
-* [ ] Issue, branch `feature/pratica04`, commit, push e Pull Request
-
-### Commit sugerido
+When you're ready, run:
 
 ```bash
-git add .
-git commit -m "Feat: Implementa useState para adicionar e remover tarefas"
-git push origin feature/pratica04
+npm run reset-project
 ```
 
-Na **Aula 05**, vamos melhorar listas (`FlatList`) e persistir dados no aparelho (`AsyncStorage`). A organização em componentes fica para a Aula 06.
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Learn more
+
+To learn more about developing your project with Expo, look at the following resources:
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+
+## Join the community
+
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
