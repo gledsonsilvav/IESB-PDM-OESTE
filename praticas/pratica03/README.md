@@ -1,94 +1,50 @@
-# 💻 Prática 03: Interface Estática do To-Do List
+# Welcome to your Expo app 👋
 
-Chegou a hora de dar uma “cara” ao aplicativo. Nesta prática você constrói a **UI** da lista de tarefas usando componentes core, `StyleSheet` e Flexbox. **Ainda sem** adicionar/remover de verdade — o foco é layout.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 🎯 Objetivos
+## Get started
 
-* Aplicar `View`, `Text`, `TextInput` e `TouchableOpacity`.
-* Organizar layout com Flexbox (`column` e `row`).
-* Criar estilos com `StyleSheet.create`.
-* Entregar uma tela legível no Expo Go.
+1. Install dependencies
 
----
+   ```bash
+   npm install
+   ```
 
-## 📦 Fluxo Git
+2. Start the app
 
-1. Crie a Issue da **Prática 03**.
-2. Crie a branch:
+   ```bash
+   npx expo start
+   ```
 
-```bash
-git checkout -b feature/pratica03
-```
+In the output, you'll find options to open the app in a
 
-3. Trabalhe no projeto Expo desta pasta (`praticas/pratica03`).  
-   Se ainda não existir app aqui, crie com `npx create-expo-app@latest` (como nas práticas anteriores) **ou** copie a base da Prática 02 e continue evoluindo.
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-```bash
-npm install
-npx expo start
-```
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
----
+## Get a fresh project
 
-## 🛠️ O que construir na tela
-
-Limpe o conteúdo padrão do arquivo principal e monte:
-
-### 1. Cabeçalho
-
-* Título grande e em negrito: **Minhas Tarefas**
-
-### 2. Área de inserção
-
-* Um `<TextInput>` com placeholder (ex.: `Digite uma tarefa...`)
-* Ao lado, um botão (`TouchableOpacity`) com texto `+` ou `Add`
-* Use uma `View` com `flexDirection: 'row'` para alinhá-los na mesma linha
-
-### 3. Lista estática (hardcoded)
-
-Crie **2 ou 3 cards** fixos no JSX (ainda sem array dinâmico). Cada card deve ter:
-
-* Um texto de tarefa (pode ser longo, para testar quebra de linha)
-* Um botão/texto `X` (lixeira simbólica) — ainda sem função real
-
----
-
-## 💡 Dicas de estilização
-
-* Na `View` raiz: `flex: 1` e `padding` para afastar das bordas.
-* No `TextInput`: `borderWidth`, `borderColor`, `borderRadius`, `padding`, `flex: 1`.
-* Nos cards: fundo claro, `borderRadius`, `padding`, `marginBottom`, e `flexDirection: 'row'` entre texto e `X`.
-* Use `StyleSheet.create` — evite deixar todos os estilos “inline” se a tela crescer.
-
-Esqueleto mental:
-
-```text
-View (container)
- ├── Text (Minhas Tarefas)
- ├── View (row)
- │    ├── TextInput
- │    └── TouchableOpacity (+)
- └── View (lista)
-      ├── View (card) → Text + TouchableOpacity (X)
-      ├── View (card)
-      └── View (card)
-```
-
----
-
-## ✅ Critérios de entrega
-
-* [ ] Layout agradável e legível no celular (Expo Go)
-* [ ] Título, input+botão em linha, e pelo menos 2 cards estáticos
-* [ ] Estilos via `StyleSheet`
-* [ ] Issue, branch `feature/pratica03`, commit, push e Pull Request
-
-### Commit sugerido
+When you're ready, run:
 
 ```bash
-git add .
-git commit -m "Feat: Cria interface estatica do app de tarefas"
-git push origin feature/pratica03
+npm run reset-project
 ```
 
-Na **Aula 04**, a interface ganha vida com **estado (`useState`)**: digitar, adicionar e remover tarefas de verdade.
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Learn more
+
+To learn more about developing your project with Expo, look at the following resources:
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+
+## Join the community
+
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
