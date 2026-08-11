@@ -1,122 +1,61 @@
-# 💻 Prática 02: Criar o Projeto e Explorar a Estrutura
+# Welcome to your Expo app 👋
 
-Agora você vai **criar o projeto Expo desta prática**, abrir os arquivos gerados e provar que entendeu a anatomia do app — alterando a tela com `View` e `Text` de forma consciente.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 🎯 Objetivos
+## Get started
 
-* Criar um projeto Expo dentro de `praticas/pratica02`.
-* Identificar a função dos principais arquivos/pastas.
-* Montar uma tela simples e organizada com `View` e `Text`.
-* Seguir o fluxo Git (Issue → Branch → PR).
+1. Install dependencies
 
----
+   ```bash
+   npm install
+   ```
 
-## 📦 Parte A — Fluxo Git
+2. Start the app
 
-1. Crie a Issue da **Prática 02**.
-2. A partir da branch principal:
+   ```bash
+   npx expo start
+   ```
 
-```bash
-git checkout -b feature/pratica02
-```
+In the output, you'll find options to open the app in a
 
-3. Entre na pasta da prática:
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-```bash
-cd praticas/pratica02
-```
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
----
+## Get a fresh project
 
-## 🚀 Parte B — Criar o projeto Expo
-
-Na pasta `praticas/pratica02`:
+When you're ready, run:
 
 ```bash
-npx create-expo-app@latest .
+npm run reset-project
 ```
 
-Se a pasta não estiver vazia por causa do README, use uma subpasta:
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-```bash
-npx create-expo-app@latest todo-basico
-cd todo-basico
-```
+## Learn more
 
-Instale e rode:
+To learn more about developing your project with Expo, look at the following resources:
 
-```bash
-npm install
-npx expo start
-```
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-Abra no **Expo Go** e confirme que o app template carrega.
+## Join the community
 
----
+Join our community of developers creating universal apps.
 
-## 🔍 Parte C — Atividade guiada: “o que é cada arquivo?”
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
-Abra o projeto no VS Code e, no próprio README desta prática (ou em um arquivo `ESTRUTURA.md` na pasta do app), escreva **em uma frase** o papel de cada item abaixo (use a Aula 02 como referência):
+# Estrutura de Arquivos do Projeto Expo
 
-* [ ] `package.json`
-* [ ] `package-lock.json`
-* [ ] `App.js` / `App.tsx` (ou pasta `app/`, se o template usar)
-* [ ] `app.json`
-* [ ] `assets/`
-* [ ] `node_modules/`
-* [ ] `.gitignore`
-* [ ] `.expo/` (se aparecer após rodar o Expo)
-
-> Dica: se tiver dúvida, busque na documentação Expo/React Native — o exercício da aula de slides pedia exatamente isso: pesquisar a função de cada arquivo gerado.
-
----
-
-## ✏️ Parte D — Tela “Bem-vindo”
-
-No arquivo principal da UI:
-
-1. Importe `View` e `Text` de `react-native`.
-2. Remova o conteúdo padrão desnecessário.
-3. Monte uma tela com:
-   * Um título: `Programação para Dispositivos Móveis`
-   * Um subtítulo: `Olá, [Seu Nome]!`
-   * Uma linha de apoio: `Meu segundo passo com Expo e React Native`
-
-Estrutura sugerida (você pode melhorar):
-
-```javascript
-import { View, Text } from 'react-native';
-
-export default function App() {
-  return (
-    <View>
-      <Text>Programação para Dispositivos Móveis</Text>
-      <Text>Olá, [Seu Nome]!</Text>
-      <Text>Meu segundo passo com Expo e React Native</Text>
-    </View>
-  );
-}
-```
-
-4. (Opcional) Altere o **nome do app** em `app.json` para algo como `pdm-pratica02`.
-
-Ainda **não** é obrigatório dominar `StyleSheet` — se quiser, use apenas propriedades simples (`fontSize`, `padding`) para legibilidade. Estilo e Flexbox entram com força na próxima aula.
-
----
-
-## ✅ Critérios de entrega
-
-* [ ] Projeto Expo criado e rodando no Expo Go
-* [ ] Anotações curtas sobre a função dos arquivos principais
-* [ ] Tela com título da disciplina + seu nome
-* [ ] Issue, branch `feature/pratica02`, commit, push e Pull Request
-
-### Commit sugerido
-
-```bash
-git add .
-git commit -m "Feat: Cria projeto Expo e explora estrutura com tela de boas-vindas"
-git push origin feature/pratica02
-```
-
-Na **Aula 03**, vamos explorar os **componentes core**, o `StyleSheet` e o **Flexbox** — a base visual do nosso To-Do List.
+- **package.json**: Gerencia as dependências (bibliotecas) e scripts de execução do projeto.
+- **package-lock.json**: Registra as versões exatas de todas as dependências instaladas para garantir consistência.
+- **app/** (ou **App.js/App.tsx**): Contém as telas e componentes visuais da aplicação.
+- **app.json**: Arquivo de configuração do Expo (nome do app, ícones, orientação da tela, etc.).
+- **assets/**: Pasta para armazenar arquivos estáticos, como imagens, fontes e ícones.
+- **node_modules/**: Pasta onde ficam armazenados os códigos de todas as bibliotecas instaladas via npm.
+- **.gitignore**: Especifica arquivos e pastas que o Git não deve rastrear ou enviar ao repositório.
+- **.expo/**: Pasta gerada pelo Expo para guardar configurações de build local e cache de execução.
