@@ -1,128 +1,50 @@
-# 💻 Prática 01: Ambiente Pronto e Hello World
+# Welcome to your Expo app 👋
 
-Nesta prática você **configura as ferramentas** e valida que consegue rodar um app React Native com Expo. Não vamos construir o To-Do ainda — o foco é o primeiro sucesso: ver **sua mensagem** no celular.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 🎯 Objetivos
+## Get started
 
-* Instalar o ambiente mínimo para a disciplina.
-* Criar (ou usar) o repositório a partir do template.
-* Rodar um projeto Expo e alterar o texto da tela.
-* Praticar o fluxo Git da disciplina (Issue → Branch → Commit → PR).
+1. Install dependencies
 
----
+   ```bash
+   npm install
+   ```
 
-## 🛠️ Parte A — Ferramentas necessárias
+2. Start the app
 
-Instale e confirme cada item:
+   ```bash
+   npx expo start
+   ```
 
-| Ferramenta | O que é | Onde baixar |
-| :--- | :--- | :--- |
-| **Node.js (LTS)** | Executa o Metro Bundler e o npm | [nodejs.org](https://nodejs.org/pt-br/) |
-| **Visual Studio Code** | Editor de código | [code.visualstudio.com](https://code.visualstudio.com/) |
-| **Git** | Versionamento | [git-scm.com](https://git-scm.com/) |
-| **Expo Go** | App para testar no celular | [expo.dev/go](https://expo.dev/go) |
+In the output, you'll find options to open the app in a
 
-### Conferência rápida no terminal
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-```bash
-node -v
-npm -v
-git --version
-```
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-Se os três comandos retornarem versões, a base está ok.
+## Get a fresh project
 
-### Extensões sugeridas no VS Code
-
-* Material Icon Theme (ícones de pastas/arquivos)
-* ES7+ React/Redux/React-Native snippets (opcional, acelera digitação)
-
-> **Nota:** Instalação completa com Android Studio / JDK é útil para emulador e builds nativos avançados. **Nesta disciplina o caminho principal é Expo Go no celular físico** (mesma Wi‑Fi do computador). Se precisar do emulador depois, o professor orientará a instalação do Android Studio.
-
----
-
-## 📦 Parte B — Repositório e fluxo Git
-
-1. Crie seu repositório a partir do **template** do professor (`Use this template`).
-2. Clone o repositório na sua máquina.
-3. Abra a pasta no VS Code.
-4. No GitHub, crie a **Issue** da Prática 01 (use o template de entrega).
-5. No terminal, na raiz do repositório:
+When you're ready, run:
 
 ```bash
-git checkout -b feature/pratica01
+npm run reset-project
 ```
 
----
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## 🚀 Parte C — Criar o primeiro projeto Expo
+## Learn more
 
-Dentro da pasta desta prática (`praticas/pratica01`), crie um app Expo:
+To learn more about developing your project with Expo, look at the following resources:
 
-```bash
-cd praticas/pratica01
-npx create-expo-app@latest .
-```
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-> Se a pasta não estiver vazia (por causa deste README), crie o app em uma subpasta `app` **ou** use `npx create-expo-app@latest meu-primeiro-app` e trabalhe dentro dela. O importante é ter um projeto Expo rodando nesta prática.
+## Join the community
 
-Depois:
+Join our community of developers creating universal apps.
 
-```bash
-npm install
-npx expo start
-```
-
-1. Abra o **Expo Go** no celular.
-2. Escaneie o QR Code do terminal (ou da página que abrir no navegador).
-3. Espere o app carregar.
-
----
-
-## ✏️ Parte D — Seu Hello World
-
-1. Abra o arquivo principal da tela (`App.js`, `App.tsx` ou o arquivo indicado pelo template Expo atual).
-2. Localize o texto padrão (ex.: “Open up App.js…”).
-3. Troque por:
-
-```text
-Olá, [Seu Nome]! Meu primeiro App.
-```
-
-4. Salve o arquivo. Com o Expo, a tela no celular deve atualizar sozinha (*Fast Refresh*).
-5. Confirme que o nome aparece corretamente.
-
-### Desafio opcional (Snack)
-
-Se quiser prototipar sem instalar nada local, abra o [Expo Snack](https://snack.expo.dev/), cole um `View` + `Text` com a mesma mensagem e teste no Expo Go. Depois, replique no projeto local.
-
----
-
-## ✅ Critérios de entrega
-
-* [ ] Node, npm e Git funcionando no terminal
-* [ ] Expo Go abre o projeto pelo QR Code
-* [ ] Texto personalizado com o **seu nome** na tela
-* [ ] Issue criada, branch `feature/pratica01`, commit, push e **Pull Request** abertos
-
-### Commit sugerido
-
-```bash
-git add .
-git commit -m "Feat: Configura ambiente e exibe Hello World no Expo"
-git push origin feature/pratica01
-```
-
-Abra o Pull Request da `feature/pratica01` para a branch principal e envie o link conforme a orientação da disciplina.
-
----
-
-## 🆘 Problemas comuns
-
-| Sintoma | O que tentar |
-| :--- | :--- |
-| QR Code não conecta | Celular e PC na mesma rede Wi‑Fi; tente o modo *Tunnel* no Expo (`npx expo start --tunnel`) |
-| `npx` lento ou falha | Confirme Node LTS; limpe cache ou tente de novo |
-| Tela não atualiza | Salve o arquivo; recarregue no Expo Go (shake → Reload) |
-
-Na **Aula 02**, vamos entender a **anatomia do projeto** (para que serve cada arquivo) e os primeiros componentes `View` e `Text` com mais profundidade.
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
