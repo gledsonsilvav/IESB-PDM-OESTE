@@ -1,0 +1,15 @@
+export const LABELS = {
+  tituloApp: 'Rotina IESB',
+  placeholderCompromisso: 'Digite um novo compromisso...',
+  botaoAdicionar: '+',
+  tituloLista: 'Meus Compromissos',
+  listaVazia: 'Nenhum compromisso cadastrado para hoje.',
+  alertaAtencao: 'Atenção',
+  alertaErro: 'Erro',
+  alertaMensagemVazia: 'Por favor, digite uma descrição para o compromisso.',
+  alertaMensagemCarregar: 'Não foi possível carregar os compromissos.',
+  alertaMensagemSalvar: 'Falha ao salvar os compromissos no dispositivo.',
+  filtroTodos: 'Todos',
+  filtroPendentes: 'Pendentes',
+  filtroConcluidos: 'Concluídos',
+};
