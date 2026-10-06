@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable, Alert } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { DespesasContext } from '../store/despesas-context';
 
-const CATEGORIAS = ['Alimentação', 'Transporte', 'Lazer', 'Contas']; //[cite: 2]
+const CATEGORIAS = ['Alimentação', 'Transporte', 'Lazer', 'Contas'];
 
 export default function GerenciarDespesa({ navigation }) {
+  const despesasCtx = useContext(DespesasContext);
+
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState('');
-  const [categoria, setCategoria] = useState(''); //[cite: 2]
+  const [categoria, setCategoria] = useState('');
   const [data, setData] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  // Regex para limitar a duas casas decimais[cite: 2]
   function valorChangeHandler(enteredText) {
     if (/^\d*\.?\d{0,2}$/.test(enteredText)) {
       setValor(enteredText);
@@ -19,13 +21,19 @@ export default function GerenciarDespesa({ navigation }) {
   }
 
   function submeterHandler() {
-    // Validação de preenchimento dos campos obrigatórios[cite: 2]
     if (!descricao.trim() || !valor || !categoria) {
-      Alert.alert('Dados Inválidos', 'Por favor, preencha descrição, valor e selecione uma categoria.');
+      Alert.alert('Dados Inválidos', 'Por favor, preencha a descrição, o valor e selecione uma categoria.');
       return;
     }
 
-    // Processamento da submissão
+    // Adiciona a nova despesa no contexto global
+    despesasCtx.adicionarDespesa({
+      descricao: descricao,
+      valor: +valor,
+      data: data.toISOString(),
+      categoria: categoria,
+    });
+
     navigation.goBack();
   }
 
@@ -37,7 +45,7 @@ export default function GerenciarDespesa({ navigation }) {
       <Text style={styles.label}>Valor (R$)</Text>
       <TextInput
         style={styles.input}
-        keyboardType="decimal-pad" //[cite: 2]
+        keyboardType="decimal-pad"
         value={valor}
         onChangeText={valorChangeHandler}
         placeholder="0.00"
@@ -86,21 +94,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   label: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginBottom: 6,
-    marginTop: 12,
-    color: '#333',
+    marginTop: 14,
+    color: '#334155',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    borderRadius: 6,
+    borderColor: '#CBD5E1',
+    padding: 12,
+    borderRadius: 8,
     fontSize: 16,
+    backgroundColor: '#F8FAFC',
   },
   categoriasContainer: {
     flexDirection: 'row',
@@ -108,40 +117,42 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   categoriaItem: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 8,
-    backgroundColor: '#eee',
+    backgroundColor: '#F1F5F9',
   },
   categoriaSelecionada: {
-    backgroundColor: '#4c0175',
+    backgroundColor: '#0F172A',
   },
   categoriaText: {
-    color: '#333',
+    color: '#475569',
   },
   categoriaTextSelecionada: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontWeight: 'bold',
   },
   datePickerBtn: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#CBD5E1',
     padding: 12,
-    borderRadius: 6,
+    borderRadius: 8,
     alignItems: 'center',
+    backgroundColor: '#F8FAFC',
   },
   dateText: {
     fontSize: 16,
+    color: '#0F172A',
   },
   submitBtn: {
-    marginTop: 24,
-    backgroundColor: '#4c0175',
+    marginTop: 28,
+    backgroundColor: '#0284C7',
     padding: 14,
-    borderRadius: 6,
+    borderRadius: 8,
     alignItems: 'center',
   },
   submitText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 16,
   },

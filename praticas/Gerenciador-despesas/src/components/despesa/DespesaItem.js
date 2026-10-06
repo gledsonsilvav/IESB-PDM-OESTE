@@ -1,14 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function DespesaItem({ descricao, valor, data, categoria }) {
-  const dataFormatada = new Date(data).toLocaleDateString('pt-BR');
+  // Tratamento seguro de data compatível com Web e Mobile
+  function formatarData(dataInput) {
+    if (!dataInput) return '';
+    
+    const d = new Date(dataInput);
+    if (isNaN(d.getTime())) return String(dataInput); // Fallback caso ocorra erro no parse
+
+    const dia = String(d.getDate()).padStart(2, '0');
+    const mes = String(d.getMonth() + 1).padStart(2, '0');
+    const ano = d.getFullYear();
+
+    return `${dia}/${mes}/${ano}`;
+  }
 
   return (
     <View style={styles.itemContainer}>
       <View style={styles.infoLeft}>
         <Text style={styles.descricao}>{descricao}</Text>
         <View style={styles.detalhesRow}>
-          <Text style={styles.dataText}>{dataFormatada}</Text>
+          <Text style={styles.dataText}>{formatarData(data)}</Text>
           <View style={styles.badgeCategoria}>
             <Text style={styles.categoriaText}>{categoria || 'Sem Categoria'}</Text>
           </View>
@@ -23,24 +35,26 @@ export default function DespesaItem({ descricao, valor, data, categoria }) {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    padding: 12,
+    padding: 14,
     marginVertical: 6,
     marginHorizontal: 16,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 8,
+    borderRadius: 10,
     elevation: 2,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
   },
   infoLeft: {
     flex: 1,
   },
   descricao: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginBottom: 4,
-    color: '#333',
+    color: '#0F172A',
   },
   detalhesRow: {
     flexDirection: 'row',
@@ -49,27 +63,27 @@ const styles = StyleSheet.create({
   },
   dataText: {
     fontSize: 12,
-    color: '#666',
+    color: '#64748B',
   },
   badgeCategoria: {
-    backgroundColor: '#e0e0e0', // Fundo cinza claro
+    backgroundColor: '#E2E8F0',
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 12, // Bordas arredondadas
+    borderRadius: 12,
   },
   categoriaText: {
-    fontSize: 10,
-    color: '#333',
+    fontSize: 11,
+    color: '#334155',
     fontWeight: '500',
   },
   valorContainer: {
-    backgroundColor: '#f3e5f5',
+    backgroundColor: '#F0F9FF',
     paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 6,
+    paddingVertical: 8,
+    borderRadius: 8,
   },
   valorText: {
-    color: '#4c0175',
+    color: '#0284C7',
     fontWeight: 'bold',
   },
 });

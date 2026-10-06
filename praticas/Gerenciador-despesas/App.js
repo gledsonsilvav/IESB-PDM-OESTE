@@ -7,6 +7,7 @@ import DespesasRecentes from './src/screens/DespesasRecentes';
 import TodasDespesas from './src/screens/TodasDespesas';
 import GerenciarDespesa from './src/screens/GerenciarDespesa';
 import IconButton from './src/components/UI/IconButton';
+import DespesasContextProvider from './src/store/despesas-context';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -15,11 +16,16 @@ function BottomTabScreen() {
   return (
     <Tab.Navigator
       screenOptions={({ navigation }) => ({
+        headerStyle: { backgroundColor: '#0F172A' },
+        headerTintColor: '#FFFFFF',
+        tabBarStyle: { backgroundColor: '#0F172A' },
+        tabBarActiveTintColor: '#38BDF8',
+        tabBarInactiveTintColor: '#94A3B8',
         headerRight: ({ tintColor }) => (
           <IconButton
             icon="add"
             size={24}
-            color={tintColor || 'black'}
+            color={tintColor || '#FFFFFF'}
             onPress={() => navigation.navigate('GerenciarDespesa')}
           />
         ),
@@ -54,19 +60,26 @@ function BottomTabScreen() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Despesas"
-          component={BottomTabScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="GerenciarDespesa"
-          component={GerenciarDespesa}
-          options={{ title: 'Gerenciar Despesa' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <DespesasContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#0F172A' },
+            headerTintColor: '#FFFFFF',
+          }}
+        >
+          <Stack.Screen
+            name="Despesas"
+            component={BottomTabScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="GerenciarDespesa"
+            component={GerenciarDespesa}
+            options={{ title: 'Gerenciar Despesa' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </DespesasContextProvider>
   );
 }

@@ -1,23 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import DespesaSaida from '../components/despesa/DespesaSaida';
+import { DespesasContext } from '../store/despesas-context';
 
-const CATEGORIAS = ['Todas', 'Alimentação', 'Transporte', 'Lazer', 'Contas']; //[cite: 2]
-
-const DESPESAS_MOCK = [
-  { id: 'd1', descricao: 'Almoço', valor: 45.50, data: '2026-10-01', categoria: 'Alimentação' },
-  { id: 'd2', descricao: 'Uber', valor: 25.00, data: '2026-10-02', categoria: 'Transporte' },
-  { id: 'd3', descricao: 'Conta de Luz', valor: 180.00, data: '2026-10-03', categoria: 'Contas' },
-  { id: 'd4', descricao: 'Cinema', valor: 35.00, data: '2026-10-04', categoria: 'Lazer' },
-];
+const CATEGORIAS = ['Todas', 'Alimentação', 'Transporte', 'Lazer', 'Contas'];
 
 export default function DespesasRecentes() {
+  const despesasCtx = useContext(DespesasContext);
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('Todas');
 
-  // Filtragem utilizando .filter()[cite: 2]
   const despesasExibidas = categoriaSelecionada === 'Todas'
-    ? DESPESAS_MOCK
-    : DESPESAS_MOCK.filter(item => item.categoria === categoriaSelecionada);
+    ? despesasCtx.despesas
+    : despesasCtx.despesas.filter(item => item.categoria === categoriaSelecionada);
 
   return (
     <View style={styles.container}>
@@ -50,28 +44,31 @@ export default function DespesasRecentes() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F8FAFC',
   },
   filtroContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingVertical: 10,
-    backgroundColor: '#fff',
+    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E2E8F0',
   },
   filtroBotao: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 16,
-    backgroundColor: '#eee',
+    borderRadius: 20,
+    backgroundColor: '#F1F5F9',
   },
   filtroAtivo: {
-    backgroundColor: '#4c0175',
+    backgroundColor: '#0F172A',
   },
   filtroTexto: {
     fontSize: 12,
-    color: '#333',
+    color: '#475569',
   },
   filtroTextoAtivo: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontWeight: 'bold',
   },
 });
