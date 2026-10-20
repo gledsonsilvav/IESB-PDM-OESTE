@@ -1,0 +1,85 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
+
+import DespesasRecentes from './src/screens/DespesasRecentes';
+import TodasDespesas from './src/screens/TodasDespesas';
+import GerenciarDespesa from './src/screens/GerenciarDespesa';
+import IconButton from './src/components/UI/IconButton';
+import DespesasContextProvider from './src/store/despesas-context';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function BottomTabScreen() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ navigation }) => ({
+        headerStyle: { backgroundColor: '#0F172A' },
+        headerTintColor: '#FFFFFF',
+        tabBarStyle: { backgroundColor: '#0F172A' },
+        tabBarActiveTintColor: '#38BDF8',
+        tabBarInactiveTintColor: '#94A3B8',
+        headerRight: ({ tintColor }) => (
+          <IconButton
+            icon="add"
+            size={24}
+            color={tintColor || '#FFFFFF'}
+            onPress={() => navigation.navigate('GerenciarDespesa')}
+          />
+        ),
+        tabBarLabelStyle: { fontSize: 12 },
+      })}
+    >
+      <Tab.Screen
+        name="DespesasRecentes"
+        component={DespesasRecentes}
+        options={{
+          title: 'Despesas Recentes',
+          tabBarLabel: 'Recentes',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="hourglass" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="TodasDespesas"
+        component={TodasDespesas}
+        options={{
+          title: 'Todas as Despesas',
+          tabBarLabel: 'Todas',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="wallet-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <DespesasContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#0F172A' },
+            headerTintColor: '#FFFFFF',
+          }}
+        >
+          <Stack.Screen
+            name="Despesas"
+            component={BottomTabScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="GerenciarDespesa"
+            component={GerenciarDespesa}
+            options={{ title: 'Gerenciar Despesa' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </DespesasContextProvider>
+  );
+}
