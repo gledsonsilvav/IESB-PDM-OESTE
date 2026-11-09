@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "petcare",
+    "slug": "petcare",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-status-bar"
+    ]
+  }
+}
