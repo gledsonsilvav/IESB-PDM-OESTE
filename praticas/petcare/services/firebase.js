@@ -1,9 +1,8 @@
+console.log("=== DIAGNÓSTICO DO FIREBASE ===");
+console.log("API Key atual:", process.env.EXPO_PUBLIC_FIREBASE_API_KEY);
+console.log("Project ID atual:", process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID);
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { 
-  initializeAuth, 
-  getAuth, 
-  getReactNativePersistence 
-} from 'firebase/auth';
+import { initializeAuth, getAuth, getReactNativePersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';

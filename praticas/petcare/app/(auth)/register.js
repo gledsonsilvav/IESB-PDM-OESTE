@@ -17,6 +17,11 @@ export default function RegisterScreen() {
       return;
     }
 
+    if (password.length < 6) {
+      Alert.alert('Atenção', 'A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
+
     if (password !== confirmPassword) {
       Alert.alert('Atenção', 'As senhas não coincidem.');
       return;
@@ -24,9 +29,22 @@ export default function RegisterScreen() {
 
     try {
       setSubmitting(true);
-      await register(email, password);
+      await register(email.trim(), password);
     } catch (error) {
-      Alert.alert('Erro no Cadastro', 'Não foi possível criar a conta.');
+      console.error("Erro no cadastro Firebase:", error.code, error.message);
+      let message = 'Não foi possível criar a conta.';
+
+      if (error.code === 'auth/api-key-not-valid' || error.message?.includes('api-key-not-valid')) {
+        message = 'Chave de API do Firebase inválida. Verifique o ficheiro .env e reinicie o servidor com npx expo start -c.';
+      } else if (error.code === 'auth/email-already-in-use') {
+        message = 'Este e-mail já está em uso.';
+      } else if (error.code === 'auth/invalid-email') {
+        message = 'E-mail inválido.';
+      } else if (error.code === 'auth/weak-password') {
+        message = 'A senha deve ter no mínimo 6 caracteres.';
+      }
+
+      Alert.alert('Erro no Cadastro', message);
     } finally {
       setSubmitting(false);
     }
@@ -48,7 +66,7 @@ export default function RegisterScreen() {
 
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Senha (mínimo 6 caracteres)"
         value={password}
         onChangeText={setPassword}
         secureTextEntry

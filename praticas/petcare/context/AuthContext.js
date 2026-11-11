@@ -26,10 +26,10 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const register = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
 
+const register = async (email, password) => {
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
   const logout = () => {
     return signOut(auth);
   };
